@@ -34,6 +34,12 @@ describe("testing stack implementation", () => {
     expect(stack.pop()).toBe(20);
   });
 
+  test("pop stack empty", () => {
+    stack.push(1);
+    stack.pop();
+    expect(stack.pop()).toBe(undefined);
+  });
+
   test("get minimum value of stack", () => {
     stack.push(10);
     stack.push(14);
