@@ -1,16 +1,24 @@
 export class Stack {
   items: number[];
   count: number;
-  minItem: number | undefined;
+  minItems: number[];
 
   constructor() {
     this.items = [];
     this.count = 0;
-    this.minItem = undefined;
+    this.minItems = [];
   }
 
   push(value: number): void {
-    this.minItem = this.minItem ? Math.min(this.minItem, value) : value;
+    if (this.items.length === 0) {
+      this.minItems.push(value);
+    } else {
+      const currentMin = this.getMin();
+
+      if (currentMin && currentMin > value) {
+        this.minItems.push(value);
+      }
+    }
 
     this.items[this.count] = value;
     this.count++;
@@ -20,8 +28,11 @@ export class Stack {
     if (this.count == 0) return undefined;
     const poppedValue = this.items.pop();
 
-    this.minItem =
-      this.minItem === poppedValue ? Math.min(...this.items) : this.minItem;
+    const currentMin = this.getMin();
+
+    if (currentMin && currentMin === poppedValue) {
+      this.minItems.pop();
+    }
 
     this.count--;
     return poppedValue;
@@ -34,6 +45,10 @@ export class Stack {
   }
 
   getMin(): number | undefined {
-    return this.minItem;
+    const minItemLength: number = this.minItems.length;
+
+    if (minItemLength === 0) return undefined;
+
+    return this.minItems[minItemLength - 1];
   }
 }

@@ -13,7 +13,11 @@ describe("testing stack implementation", () => {
     stack.push(2);
     stack.push(20);
 
-    expect(stack).toEqual({ count: 4, items: [10, 14, 2, 20], minItem: 2 });
+    expect(stack).toEqual({
+      count: 4,
+      items: [10, 14, 2, 20],
+      minItems: [10, 2],
+    });
   });
 
   test("top stack", () => {
@@ -57,5 +61,20 @@ describe("testing stack implementation", () => {
     stack.pop();
 
     expect(stack.getMin()).toBe(10);
+  });
+
+  test("get minimum value of stack with more mins", () => {
+    stack.push(0);
+    stack.push(1);
+    stack.push(2);
+    stack.push(0);
+    stack.push(3);
+    stack.push(4);
+
+    stack.pop();
+    stack.pop();
+    stack.pop();
+
+    expect(stack.getMin()).toBe(0);
   });
 });
