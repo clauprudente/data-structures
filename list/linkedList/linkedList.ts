@@ -1,4 +1,4 @@
-class Node {
+export class Node {
   value: number;
   next: Node | undefined;
 
@@ -37,18 +37,19 @@ export class LinkedList {
   pushBack(value: number): void {
     const newNode = new Node(value, undefined);
     this.count++;
-    if (!this.head) {
+
+    if (this.head) {
+      let currentNode: Node = this.head;
+      while (currentNode?.next) {
+        currentNode = currentNode.next;
+      }
+
+      currentNode.next = newNode;
+    } else {
       this.head = newNode;
-      this.tail = newNode;
-      return;
     }
 
-    let currentNode: Node = this.head;
-    while (currentNode?.next) {
-      currentNode = currentNode.next;
-    }
-
-    currentNode.next = newNode;
+    this.tail = newNode;
   }
 
   insertAtIndex(value: number, index: number): void {
