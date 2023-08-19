@@ -127,15 +127,3 @@ export class DoubleLinkedList {
     return array.join("");
   }
 }
-
-let doubleLinkedList: DoubleLinkedList;
-
-doubleLinkedList = new DoubleLinkedList();
-
-doubleLinkedList.pushFront(2);
-doubleLinkedList.pushFront(6);
-doubleLinkedList.pushFront(4);
-doubleLinkedList.pushBack(100);
-doubleLinkedList.printDoubleLinkedList();
-doubleLinkedList.delete(2);
-doubleLinkedList.printDoubleLinkedList();

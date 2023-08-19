@@ -33,14 +33,8 @@ export class LinkedList {
   pushBack(value: number): void {
     const newNode = new Node(value, undefined);
 
-    if (this.head) {
-      let currentNode: Node = this.head;
-      while (currentNode?.next) {
-        // refatorar solução para O(1); atualmente está O(N)
-        currentNode = currentNode.next;
-      }
-
-      currentNode.next = newNode;
+    if (this.tail) {
+      this.tail.next = newNode;
     } else {
       this.head = newNode;
     }
