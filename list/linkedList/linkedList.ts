@@ -1,4 +1,4 @@
-export class Node {
+class Node {
   value: number;
   next: Node | undefined;
 
@@ -11,17 +11,13 @@ export class Node {
 export class LinkedList {
   head: Node | undefined;
   tail: Node | undefined;
-  count: number;
 
   constructor() {
     this.head = undefined;
     this.tail = undefined;
-    this.count = 0;
   }
 
   pushFront(value: number): void {
-    this.count++;
-
     if (this.head) {
       const newNode = new Node(value, this.head);
 
@@ -36,11 +32,11 @@ export class LinkedList {
 
   pushBack(value: number): void {
     const newNode = new Node(value, undefined);
-    this.count++;
 
     if (this.head) {
       let currentNode: Node = this.head;
       while (currentNode?.next) {
+        // refatorar solução para O(1); atualmente está O(N)
         currentNode = currentNode.next;
       }
 
@@ -59,7 +55,7 @@ export class LinkedList {
       temporaryNode = temporaryNode?.next;
     }
 
-    let newNode: Node = new Node(value, temporaryNode?.next);
+    const newNode: Node = new Node(value, temporaryNode?.next);
 
     if (temporaryNode != undefined) {
       temporaryNode.next = newNode;
@@ -71,7 +67,6 @@ export class LinkedList {
     let temporaryNode = this.head;
 
     for (let i = 0; i < index; i++) {
-      console.log(`index: ${i} ; node: ${temporaryNode?.value}`);
       prevTemporaryNode = temporaryNode;
       temporaryNode = temporaryNode?.next;
     }
