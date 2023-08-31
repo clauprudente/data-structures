@@ -1,19 +1,19 @@
 //leetcode.com/problems/maximum-depth-of-n-ary-tree/
 
-class Node2 {
+class TreeNode {
   val: number;
-  children: Node2[];
-  constructor(val?: number, children?: Node2[]) {
+  children: TreeNode[];
+  constructor(val?: number, children?: TreeNode[]) {
     this.val = val === undefined ? 0 : val;
     this.children = children === undefined ? [] : children;
   }
 }
 
-function maxDepth(root: Node2 | null): number {
+function maxDepth(root: TreeNode | null): number {
   return depth(root);
 }
 
-function depth(root: Node2 | null): number {
+function depth(root: TreeNode | null): number {
   if (root == null) {
     return 0;
   }
