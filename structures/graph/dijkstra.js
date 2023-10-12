@@ -21,99 +21,6 @@ class Graph {
     return this.adjList[source].includes(target);
   }
 
-  bfs(source) {
-    let queue = [source]; // queue.push(source)
-    let visited = new Array(this.vertices).fill(false);
-    let visitedNodes = [];
-
-    visited[source] = true;
-
-    while (!!queue.length) {
-      let workNode = queue.shift();
-
-      visitedNodes.push(workNode);
-
-      for (let neigh of this.adjList[workNode]) {
-        if (!visited[neigh]) {
-          visited[neigh] = true;
-          queue.push(neigh);
-        }
-      }
-    }
-
-    // while (queue.length) {
-    //   const workNode = queue.shift();
-
-    //   if (!visited.has(workNode)) {
-    //     visited.add(workNode);
-    //     visitedNodes.push(workNode);
-
-    //     for (const neighbor of this.adjList[workNode]) {
-    //       queue.push(neighbor);
-    //     }
-    //   }
-    // }
-
-    return visitedNodes;
-  }
-
-  // bfs(source) { // O(V+E)
-  //   let queue = [source] // queue.push(source)
-  //   let visited = new Set()
-  //   let visitedNodes = []
-
-  //   visited.add(source)
-
-  //   while(!!queue.length) {
-  //     let workNode = queue.shift()
-
-  //     visitedNodes.push(workNode)
-
-  //     for(neigh of this.adjList[workNode]) {
-  //       if(!visited.has(neigh)) {
-  //         visited.add() = neigh
-  //         queue.push(neigh)
-  //       }
-  //     }
-  //   }
-
-  //   return visitedNodes
-  // }
-
-  dfsRec(source, visitedNodes = new Set()) {
-    if (!visitedNodes.has(source)) {
-      visitedNodes.add(source);
-      for (let neigh of this.adjList[source]) {
-        this.dfsRec(neigh, visitedNodes);
-      }
-    }
-
-    return visitedNodes;
-  }
-
-  dfs(source) {
-    let stack = [source]; // stack.push(source)
-    let visited = new Array(this.vertices).fill(false);
-    let visitedNodes = [];
-
-    visited[source] = true;
-
-    while (!!stack.length) {
-      let workNode = stack.pop();
-
-      visitedNodes.push(workNode);
-
-      for (let neigh of this.adjList[workNode]) {
-        if (!visited[neigh]) {
-          visited[neigh] = true;
-          stack.push(neigh);
-        }
-      }
-    }
-
-    return visitedNodes;
-  }
-
   dijkstra(source) {
     let visited = new Set();
     let d = new Array(this.vertices).fill(Infinity);
@@ -154,39 +61,6 @@ class Graph {
     return d;
   }
 }
-
-// const graphExample = new Graph(7);
-// g.addEdge(1, 2, 1)
-// g.addEdge(2, 1, 1)
-// g.addEdge(1, 4, 1)
-// g.addEdge(4, 1, 1)
-
-// g.addEdge(2, 3, 1)
-// g.addEdge(3, 2, 1)
-// g.addEdge(2, 4, 1)
-// g.addEdge(4, 2, 1)
-// g.addEdge(2, 5, 1)
-// g.addEdge(5, 2, 1)
-
-// g.addEdge(3, 5, 1)
-// g.addEdge(5, 3, 1)
-
-// g.addEdge(4, 5, 1)
-// g.addEdge(5, 4, 1)
-
-// console.log(g.bfs(1))
-// console.log(g.dfs(1))
-// console.log(g.dfsRec(1))
-
-// graphExample.addEdge(1, 2, 5);
-// graphExample.addEdge(1, 3, 2);
-// graphExample.addEdge(2, 3, 7);
-// graphExample.addEdge(2, 4, 8);
-// graphExample.addEdge(3, 5, 8);
-// graphExample.addEdge(3, 4, 4);
-// graphExample.addEdge(4, 5, 6);
-// graphExample.addEdge(4, 6, 4);
-// graphExample.addEdge(5, 6, 3);
 
 const graph = new Graph(7);
 
