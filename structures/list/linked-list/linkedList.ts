@@ -26,7 +26,7 @@ export class LinkedList {
       const newNode = new Node(value, undefined);
 
       this.head = newNode;
-      this.tail = newNode;
+      this.tail = this.head;
     }
   }
 
