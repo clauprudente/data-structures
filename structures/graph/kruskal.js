@@ -47,7 +47,7 @@ function kruskal() {
   edges.sort((a) => a + b);
   let sumEdges = 0;
 
-  //passo 4: iterar sobre o vetor ordenado O(E*V)
+  //passo 4: iterar sobre o vetor ordenado // O(E + Vˆ 2)
   for (let i = 0; i < mst.edges.length; i++) {
     let weight = edges[i][0];
     let source = edges[i][1];
